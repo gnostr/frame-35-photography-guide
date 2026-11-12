@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2f0e9">
+<title>FRAME / 35 — Photography Field Guide</title>
+<style>
+:root{--paper:#f2f0e9;--card:#e8e6de;--card2:#e0e3d8;--ink:#252923;--muted:#74776d;--line:#d7d4c9;--olive:#657257;--white:#fbfaf6;--shadow:0 14px 40px rgba(37,41,35,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.5}
+button,select,input{font:inherit}button{cursor:pointer}.shell{max-width:1120px;margin:auto;padding:22px 22px 60px}.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:8px 0 18px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:12px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:23px}.brand-name{font-weight:850;letter-spacing:.13em;font-size:17px}.eyebrow,.small{font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}.pill{border:1px solid var(--line);border-radius:99px;padding:6px 11px;color:var(--olive);font-size:11px;letter-spacing:.08em}
+.hero{padding:40px 0 28px;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}.hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(42px,6vw,70px);line-height:.98;margin:10px 0 16px;letter-spacing:-.045em}.hero h1 em{color:var(--olive)}.hero p{color:var(--muted);max-width:470px}.hero-visual{min-height:270px;border-radius:20px;overflow:hidden;position:relative;background:linear-gradient(135deg,#a8a28e,#55594c 55%,#252923);box-shadow:var(--shadow)}.hero-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 15%,rgba(255,255,255,.18) 40%,transparent 62%),radial-gradient(circle at 75% 25%,rgba(245,224,177,.5),transparent 32%)}.hero-visual:after{content:"35mm  /  LIGHT  /  COLOR";position:absolute;bottom:18px;left:20px;color:#f2f0e9;letter-spacing:.2em;font-size:11px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.stat{background:var(--card);border-radius:12px;padding:12px 16px;min-width:130px}.stat strong{display:block;font:26px Georgia,serif}.stat span{font-size:10px;letter-spacing:.1em;color:var(--muted)}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,30px);box-shadow:var(--shadow);margin-top:18px}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}.panel h2{font:30px Georgia,serif;margin:3px 0}.panel h3{font-size:17px;margin:0 0 7px}.sub{font-size:13px;color:var(--muted);margin:0}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 26px}.step{border:0;background:none;text-align:left;padding:0;color:var(--muted)}.step .bar{height:5px;border-radius:8px;background:var(--line);margin-bottom:8px}.step.active .bar,.step.done .bar{background:var(--olive)}.step b{font-size:11px;font-weight:600}.step.active b{color:var(--ink)}
+.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice{border:1px solid var(--line);background:var(--paper);border-radius:13px;padding:15px;text-align:left;min-height:88px;transition:.18s}.choice:hover{transform:translateY(-2px);border-color:var(--olive)}.choice.selected{background:var(--card2);border:1.5px solid var(--olive);box-shadow:inset 0 0 0 1px var(--olive)}.choice strong{display:block;font-size:14px}.choice span{display:block;font-size:11px;color:var(--muted);margin-top:4px}.choice .symbol{font-size:19px;margin-bottom:9px;display:block;color:var(--olive)}
+.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.btn{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:99px;padding:11px 18px;font-size:13px}.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}.btn:disabled{opacity:.35;cursor:not-allowed}.btn:hover:not(:disabled){filter:brightness(1.15)}
+.note{background:var(--card);border-radius:12px;padding:13px 15px;color:#55594f;font-size:12px;margin-top:16px}.result{display:none;margin-top:22px}.result.show{display:block}.result-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.result-title h2{font:32px Georgia,serif;margin:0}.tag{display:inline-block;border-radius:99px;padding:5px 9px;background:var(--card2);font-size:10px;color:#4f5b45;margin:3px 4px 3px 0}
+.recommend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.rec{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:16px;min-width:0}.rec .rank{font-size:10px;letter-spacing:.12em;color:var(--olive)}.rec h3{font:23px Georgia,serif;margin:8px 0}.rec p{font-size:12px;color:#62665b}.rec .meta{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}.rec.primary{background:var(--card2);border-color:#aab19f}.empty{padding:22px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:13px}
+.exposure{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.exposure>div{background:var(--card);border-radius:13px;padding:15px}.exposure strong{display:block;margin:4px 0}.toolrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.toolrow select,.toolrow input{border:1px solid var(--line);background:var(--white);border-radius:9px;padding:9px;color:var(--ink)}
+.library{margin-top:24px}.library-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tab{border:1px solid var(--line);background:transparent;padding:8px 13px;border-radius:99px;font-size:12px;color:var(--muted)}.tab.active{background:var(--ink);color:white;border-color:var(--ink)}.library-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.libitem{padding:12px;background:var(--card);border-radius:10px;font-size:12px}.libitem b{display:block}.libitem small{color:var(--muted)}
+.footer{padding:28px 0 0;border-top:1px solid var(--line);margin-top:32px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){.shell{padding:14px 14px 40px}.hero{grid-template-columns:1fr;padding:28px 0 16px}.hero-visual{min-height:190px}.choice-grid{grid-template-columns:repeat(2,1fr)}.recommend-grid{grid-template-columns:1fr}.library-list{grid-template-columns:repeat(2,1fr)}.exposure{grid-template-columns:1fr}.panel-head{display:block}.pill{display:inline-block;margin-top:10px}}
+@media(max-width:420px){.choice-grid{grid-template-columns:1fr 1fr}.choice{padding:12px;min-height:82px}.library-list{grid-template-columns:1fr 1fr}.hero h1{font-size:46px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+ <div class="brand"><div class="mark">◉</div><div><div class="brand-name">FRAME / 35</div><div class="eyebrow">The Photography Field Guide</div></div></div>
+ <div class="pill">FIELD EDITION · 01</div>
+</header>
+<section class="hero">
+ <div><div class="eyebrow">A GUIDE TO PHOTOGRAPHIC EXPRESSION</div><h1>See the light.<br><em>Find your frame.</em></h1><p>从现场光线出发，结合拍摄场景与目标效果，为你匹配具体胶片、Leica LUX Look 或 VSCO Pro Preset，并提供曝光与测光参考。</p><div class="stats"><div class="stat"><strong>24</strong><span>FILM ENTRIES</span></div><div class="stat"><strong>4</strong><span>LEICA EFFECT GROUPS</span></div><div class="stat"><strong>14</strong><span>VSCO PRO PRESETS*</span></div></div></div>
+ <div class="hero-visual" role="img" aria-label="Abstract warm analog photography still life"></div>
+</section>
+<section class="panel" id="wizard">
+ <div class="panel-head"><div><div class="eyebrow">THE RECOMMENDATION ENGINE</div><h2>Build your look.</h2><p class="sub">依次选择四个条件。最后一步可比较三种实现路径。</p></div><div class="pill">LIGHT FIRST · LOOK LAST</div></div>
+ <div class="steps" id="stepbar">
+  <button class="step active" data-step="0"><div class="bar"></div><b>01 光线环境</b></button>
+  <button class="step" data-step="1"><div class="bar"></div><b>02 拍摄场景</b></button>
+  <button class="step" data-step="2"><div class="bar"></div><b>03 目标效果</b></button>
+  <button class="step" data-step="3"><div class="bar"></div><b>04 实现方式</b></button>
+ </div>
+ <div id="stepcontent"></div>
+ <div class="navrow"><button class="btn secondary" id="back" disabled>← 上一步</button><button class="btn" id="next">下一步 →</button></div>
+ <div class="note">推荐是基于胶片特性与已整理的 Look / Preset 描述进行的规则匹配。滤镜的真实成像仍受原片曝光、白平衡、设备与后期强度影响。</div>
+ <div class="result" id="result"></div>
+</section>
+<section class="panel library">
+ <div class="eyebrow">REFERENCE LIBRARY</div><h2>Explore the library.</h2><p class="sub">浏览本版本纳入的胶片与具体风格目录。名称和分类可用于推荐结果交叉核对。</p>
+ <div class="library-tabs"><button class="tab active" data-lib="film">Film · 24</button><button class="tab" data-lib="leica">Leica LUX</button><button class="tab" data-lib="vsco">VSCO Pro</button></div>
+ <div class="library-list" id="librarylist"></div>
+</section>
+<footer class="footer"><span>FRAME / 35 · LIGHT FIRST. SCENE SECOND. LOOK LAST.</span><span>Personal photography reference · Offline-ready HTML</span></footer>
+</div>
+<script>
+const films=[
+["Portra 160","彩色负片","ISO 160 · C-41","细腻颗粒、柔和自然肤色；适合充足光线的人像与旅行。"],
+["Portra 400","彩色负片","ISO 400 · C-41","均衡宽容度与自然肤色；适合人像、街拍和日常纪实。"],
+["Portra 800","彩色负片","ISO 800 · C-41","适合较弱光线与室内纪实；颗粒感比低感光度 Portra 更明显。"],
+["Portra 800 Push +1","彩色负片","EI 1600 · Push +1","按 EI 1600 曝光并 +1 冲洗；对比和颗粒增加，阴影细节可能减少。"],
+["Portra 800 Push +2","彩色负片","EI 3200 · Push +2","按 EI 3200 曝光并 +2 冲洗；高反差和颗粒更明显，阴影损失风险更高。"],
+["Ektar 100","彩色负片","ISO 100 · C-41","高饱和、细颗粒；适合风光、建筑与色彩丰富的场景。"],
+["Gold 200","彩色负片","ISO 200 · C-41","温暖、怀旧的色彩倾向；适合日光、人文和旅行。"],
+["UltraMax 400","彩色负片","ISO 400 · C-41","多用途彩色负片，适合日常、街拍和旅行。"],
+["Fujifilm C200","彩色负片","ISO 200 · C-41","自然日光色彩取向；适合日常和旅行记录。"],
+["Pro 400H","彩色负片","ISO 400 · C-41","柔和色彩与肤色表现；已停产，适合库存胶片使用。"],
+["X-Tra 400","彩色负片","ISO 400 · C-41","日常通用型彩色负片，适合街拍与旅行。"],
+["Ektachrome 100","反转片","ISO 100 · E-6","色彩清晰、反差鲜明；曝光需谨慎保护高光。"],
+["Kodachrome 64","反转片","ISO 64 · K-14（已停止）","经典历史反转片；K-14 冲洗已停止，不适合作为常规现行流程。"],
+["Provia 100F","反转片","ISO 100 · E-6","色彩相对自然、细节清晰；适合风光和建筑。"],
+["Velvia 100","反转片","ISO 100 · E-6","高饱和与强烈色彩表现；适合风光和自然题材。"],
+["Vision3 50D","电影负片","ISO 50 · ECN-2","日光平衡、细腻颗粒；适合充足日光与高光层次。"],
+["Vision3 200T","电影负片","ISO 200 · ECN-2","钨丝灯平衡；适合室内暖光及人工照明。"],
+["Vision3 250D","电影负片","ISO 250 · ECN-2","日光平衡、宽容度较高；适合日景与电影感纪实。"],
+["Vision3 500T","电影负片","ISO 500 · ECN-2","钨丝灯平衡、高感光度；适合夜景和低光人工照明。"],
+["Verita 200D","电影负片","ISO 200 · 工艺待核实","保留用户指定条目；冲洗工艺及具体乳剂信息需按实际产品核实。"],
+["Tri-X 400","黑白","ISO 400 · B&W","经典黑白颗粒和反差；适合街拍、人文与纪实。"],
+["T-Max 100","黑白","ISO 100 · B&W","细颗粒、细节清晰；适合静物、建筑和光线充足场景。"],
+["Neopan 100 Acros II","黑白","ISO 100 · B&W","细腻颗粒与丰富灰阶；适合建筑、风光和静物。"],
+["HP5 Plus 400","黑白","ISO 400 · B&W","宽容度与颗粒表现均衡；适合人文、街拍及可 Push 场景。"]
+];
+const leica=[
+["Standard","Core Color Look","干净、中性、均衡的基础色彩。"],
+["Vivid","Core Color Look","增强饱和度与色彩冲击力。"],
+["Natural","Core Color Look","较真实自然的色彩与柔和过渡。"],
+["Chrome","Core Color Look","低调、复古、偏反转片气质的风格。"],
+["Classic","Core Color Look","带有模拟电影气质的温暖与层次。"],
+["Contemporary","Core Color Look","现代、均衡，偏自然肤色取向。"],
+["Eternal","Core Color Look","较大胆的饱和度与洋红电影感倾向。"],
+["Brass","Core Color Look","金色、暖调取向。"],
+["Teal","Core Color Look","蓝绿冷调电影感。"],
+["Monochrome","Monochrome Look","经典黑白转换。"],
+["Monochrome High Contrast","Monochrome Look","深黑与亮白，明暗分离更强。"],
+["Blue / Cyanotype","Monochrome Colour Filter","蓝色 / 氰版色调方向；用于黑白影像的色彩响应控制。"],
+["Selenium","Monochrome Colour Filter","偏冷、柔和对比的色调方向。"],
+["Sepia","Monochrome Colour Filter","复古棕黄调方向。"],
+["Model A","Monochrome Colour Filter","Leica I Model A 历史黑白风格模拟。"],
+["Greg Williams (WLM)","Artist Look","受 Tri-X 400 扫描启发的电影感黑白风格。"],
+["Steve McCurry","Artist Look","鲜明色彩、自然反差与温暖层次。"],
+["Bloom","Special Effect","高光扩散 / 柔化光线的特殊效果；具体效果强度以 App 为准。"]
+];
+const vsco=[
+["01 Pro","Pro Preset","官方 Pro Preset。"],
+["A4 Pro","Pro Preset","自然色调、细微色彩偏移与轻微褪色感。"],
+["A6 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["A8 Pro","Pro Preset","蓝色与低饱和方向。"],
+["AL1 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["AL3 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["B1 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["B5 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["C1 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["C8 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["G6 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["M5 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["SS1 Pro","Pro Preset","官方 Pro Preset；具体成像以应用内预览为准。"],
+["V3 Pro","Pro Preset","自然暖调方向。"]
+];
+const steps=[
+{title:"光线环境",desc:"选择现场的主要光线条件。",opts:[["晴朗直射光","强光 · 硬阴影","☀"],["阴天漫射光","均匀 · 低反差","☁"],["柔和自然光","窗边 · 柔和光线","◐"],["逆光","主体背光 · 高反差","↗"],["室内暖光","钨丝灯 · 混合光","◉"],["夜景 / 低光","暗光 · 人工光源","☾"]]},
+{title:"拍摄场景",desc:"选择画面的主体与拍摄类型。",opts:[["人像","肤色、主体表现","◉"],["街拍","瞬间、纪实","▦"],["风光","色彩、层次","⌁"],["建筑","线条、细节","▤"],["旅行纪实","环境、人文","⌖"],["静物","质感、细节","◇"],["美食","色彩、暖调","✳"],["夜景","灯光、暗部","☾"],["时尚","造型、色彩","✦"]]},
+{title:"目标效果",desc:"选择你希望照片呈现的视觉性格。",opts:[["自然胶片感","自然肤色 · 细腻颗粒",""],["复古暖调","金色高光 · 怀旧色彩",""],["冷调电影感","蓝绿阴影 · 氛围反差",""],["鲜艳通透","饱和色彩 · 清晰层次",""],["低饱色情绪感","柔和色彩 · 低反差",""],["黑白纪实","灰阶层次 · 纹理",""],["梦幻柔焦","柔和高光 · 光晕",""],["真实自然","忠实色彩 · 克制处理",""]]},
+{title:"实现方式",desc:"选择具体的创作工具，也可以让系统同时比较。",opts:[["全部比较","胶片 + Leica LUX + VSCO","✧"],["传统胶片","使用你指定的 24 个胶片条目","▤"],["Leica LUX Pro","Looks、Artist Looks、黑白滤镜与特效","◉"],["VSCO Pro","只使用 VSCO Pro / Membership Presets","▧"]]}
+];
+let state={step:0,answers:["柔和自然光","人像","自然胶片感","全部比较"]};
+function renderStep(){
+ const s=steps[state.step],val=state.answers[state.step];
+ document.getElementById("stepcontent").innerHTML=`<div class="eyebrow">STEP 0${state.step+1} / 04</div><h3>${s.title}</h3><p class="sub">${s.desc}</p><div class="choice-grid">${s.opts.map(o=>`<button class="choice ${val===o[0]?"selected":""}" data-value="${o[0]}"><span class="symbol">${o[2]}</span><strong>${o[0]}</strong><span>${o[1]}</span></button>`).join("")}</div>`;
+ document.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{state.answers[state.step]=b.dataset.value;renderStep()}));
+ document.querySelectorAll(".step").forEach((b,i)=>{b.classList.toggle("active",i===state.step);b.classList.toggle("done",i<state.step)});
+ document.getElementById("back").disabled=state.step===0;
+ document.getElementById("next").textContent=state.step===3?"生成具体推荐 →":"下一步 →";
+ document.getElementById("result").classList.remove("show");
+}
+document.querySelectorAll(".step").forEach(b=>b.addEventListener("click",()=>{state.step=+b.dataset.step;renderStep()}));
+document.getElementById("back").addEventListener("click",()=>{if(state.step>0){state.step--;renderStep()}});
+document.getElementById("next").addEventListener("click",()=>{if(state.step<3){state.step++;renderStep()}else generate()});
+function scoreFilm(f,light,scene,effect){
+ let n=f[0],desc=f[3],score=0,why=[];
+ if(light==="夜景 / 低光" && /800|500T|200T|Push/.test(n)){score+=4;why.push("感光度或钨丝灯平衡更适合较弱光线")}
+ if(light==="晴朗直射光" && /160|100|50D|250D|Ektar|Velvia|Provia/.test(n)){score+=3;why.push("低感光度或日光平衡适合充足日光")}
+ if(light==="室内暖光" && /200T|500T/.test(n)){score+=5;why.push("钨丝灯平衡适合人工暖光")}
+ if(light==="柔和自然光" && /Portra|Pro 400H|C200/.test(n)){score+=4;why.push("适合自然肤色与柔和光线")}
+ if(scene==="人像" && /Portra|Pro 400H|HP5|Tri-X/.test(n)){score+=3;why.push("适合人物肤色或纪实表达")}
+ if(scene==="风光" && /Ektar|Velvia|Provia|Acros|50D/.test(n)){score+=4;why.push("细节或色彩表现适合风光")}
+ if(scene==="建筑" && /Ektar|T-Max|Acros|Provia/.test(n)){score+=3;why.push("适合线条、细节或灰阶")}
+ if(effect==="自然胶片感" && /Portra|Pro 400H|C200/.test(n)){score+=4;why.push("色彩和肤色倾向贴近自然胶片感")}
+ if(effect==="复古暖调" && /Gold|Brass/.test(n)){score+=4;why.push("暖色倾向贴近复古效果")}
+ if(effect==="鲜艳通透" && /Ektar|Velvia|Vivid/.test(n)){score+=4;why.push("色彩表现更鲜明")}
+ if(effect==="黑白纪实" && /Tri-X|HP5|T-Max|Acros/.test(n)){score+=5;why.push("黑白乳剂适合纪实表达")}
+ if(effect==="冷调电影感" && /200T|500T|Teal/.test(n)){score+=3;why.push("色温与电影感方向较匹配")}
+ return {name:n,group:f[1],meta:f[2],desc,score,why};
+}
+function scoreLeica(item,light,scene,effect){
+ let n=item[0],d=item[2],s=0,w=[];
+ const map={"自然胶片感":["Natural","Contemporary","Chrome","Classic"],"复古暖调":["Brass","Classic","Chrome","Steve McCurry"],"冷调电影感":["Teal","Chrome","Eternal"],"鲜艳通透":["Vivid","Steve McCurry","Eternal"],"低饱色情绪感":["Chrome","Natural","Selenium"],"黑白纪实":["Monochrome","Monochrome High Contrast","Greg Williams (WLM)"],"梦幻柔焦":["Bloom","Brass"],"真实自然":["Standard","Natural","Contemporary"]};
+ if((map[effect]||[]).some(x=>n.includes(x)||x.includes(n))){s+=6;w.push("风格特征与目标效果匹配")}
+ if(scene==="人像" && /Natural|Contemporary|Steve McCurry|Brass/.test(n)){s+=2;w.push("适合人物色彩表达")}
+ if(scene==="街拍" && /Greg|Monochrome|Chrome|Classic/.test(n)){s+=2;w.push("适合街头纪实氛围")}
+ if(light==="夜景 / 低光" && /Classic|Teal|Bloom|Monochrome/.test(n)){s+=2;w.push("可用于强化夜景氛围")}
+ if(light==="晴朗直射光" && /Chrome|Natural|Standard/.test(n)){s+=2;w.push("适合控制明亮环境下的色彩表达")}
+ return {name:n,group:item[1],desc:d,score:s,why:w};
+}
+function scoreVsco(item,light,scene,effect){
+ let n=item[0],d=item[2],s=1,w=[];
+ const m={"自然胶片感":["A6 Pro","A4 Pro","AL1 Pro","C1 Pro"],"复古暖调":["A4 Pro","A6 Pro","V3 Pro","WE4 Pro"],"冷调电影感":["A8 Pro","C8 Pro"],"鲜艳通透":["G6 Pro","V3 Pro"],"低饱色情绪感":["A8 Pro","M5 Pro","AL3 Pro"],"黑白纪实":["B1 Pro","B5 Pro"],"梦幻柔焦":["SS1 Pro"],"真实自然":["A4 Pro","C1 Pro","A6 Pro"]};
+ if((m[effect]||[]).includes(n)){s+=6;w.push("预设的已知风格方向与目标效果匹配")}
+ if(scene==="人像" && /A6|C1|AL1|V3/.test(n)){s+=2;w.push("可作为人像色彩处理的起点")}
+ if(scene==="风光" && /A8|G6|V3/.test(n)){s+=2;w.push("可作为自然色彩处理的起点")}
+ if(light==="阴天漫射光" && /A4|A6|AL1|C1/.test(n)){s+=1;w.push("可作为柔和色彩处理起点")}
+ return {name:n,group:item[1],desc:d,score:s,why:w};
+}
+function exposure(light,scene,effect){
+ let met="评价测光",ev="+0.3～+0.7 EV",tip="先用评价测光，观察主体与背景明暗，再微调曝光补偿。";
+ if(light==="逆光"){met=scene==="人像"?"点测光 / 面部优先":"点测光 / 主体优先";ev="+0.7～+1.7 EV";tip="对主体测光，避免人物欠曝；注意背景高光可能溢出。"}
+ else if(light==="晴朗直射光"){met="评价测光 / 高光检查";ev="0～+0.3 EV";tip="注意正午硬阴影和高光；反转片尤其要保护高光。"}
+ else if(light==="夜景 / 低光"){met="点测光 / 避开灯泡直测";ev="-0.3～-1.0 EV";tip="保护灯牌与灯源高光，确保快门速度足够；不要只靠补偿解决欠曝。"}
+ else if(light==="阴天漫射光"){met="评价测光";ev="+0.3～+0.7 EV";tip="阴天容易显灰，可适度增加曝光，但注意浅色主体。"}
+ else if(light==="室内暖光"){met="点测光 / 主体优先";ev="+0.3～+0.7 EV";tip="注意混合色温；钨丝灯平衡电影胶片可作为候选。"}
+ if(effect==="黑白纪实"){tip+=" 黑白可重点观察中间调、阴影细节与高光纹理。"}
+ return {met,ev,tip};
+}
+function card(title,sub,desc,why,primary=false){return `<article class="rec ${primary?"primary":""}"><div class="rank">${primary?"BEST MATCH":"ALTERNATIVE"}</div><h3>${title}</h3><div class="tag">${sub}</div><p>${desc}</p><div class="meta">${why||"作为备选风格方向；建议结合原片预览微调。"}</div></article>`}
+function generate(){
+ const [light,scene,effect,method]=state.answers;
+ const res=document.getElementById("result"),ex=exposure(light,scene,effect);
+ let html=`<div class="result-title"><div><div class="eyebrow">YOUR MATCHES</div><h2>Your field notes.</h2></div><span class="pill">RECOMMENDATION</span></div><div class="note"><b>${light} · ${scene}</b><br>目标效果：${effect}　/　实现方式：${method}</div><div class="recommend-grid">`;
+ if(method==="全部比较"||method==="传统胶片"){
+  const arr=films.map(f=>scoreFilm(f,light,scene,effect)).sort((a,b)=>b.score-a.score).slice(0,3);
+  arr.forEach((x,i)=>html+=card(x.name,`${x.group} · ${x.meta}`,x.desc,x.why.join("；"),i===0));
+ }
+ if(method==="全部比较"||method==="Leica LUX Pro"){
+  const arr=leica.map(f=>scoreLeica(f,light,scene,effect)).sort((a,b)=>b.score-a.score).slice(0,3);
+  arr.forEach((x,i)=>html+=card(x.name,x.group,x.desc,x.why.join("；")||"按所选目标效果提供的风格候选。",i===0));
+ }
+ if(method==="全部比较"||method==="VSCO Pro"){
+  const arr=vsco.map(f=>scoreVsco(f,light,scene,effect)).sort((a,b)=>b.score-a.score).slice(0,3);
+  arr.forEach((x,i)=>html+=card(x.name,x.group,x.desc,x.why.join("；")||"该 Preset 已确认属于 Pro 名单；具体效果请在 VSCO 内预览。",i===0));
+ }
+ html+=`</div><div class="exposure"><div><div class="eyebrow">METERING</div><strong>${ex.met}</strong><p class="sub">建议测光方式</p></div><div><div class="eyebrow">EXPOSURE COMPENSATION</div><strong>${ex.ev}</strong><p class="sub">现场起始参考，不是固定曝光值</p></div></div><div class="note">${ex.tip}<br><br><b>胶片注意：</b>负片通常可容忍适度过曝；反转片应谨慎保护高光；Vision3 原始电影负片通常需要 ECN-2 冲洗。VSCO 与 Leica 的后期 Look 不会改变拍摄时已经丢失的高光或阴影信息。</div><div class="navrow"><button class="btn secondary" onclick="document.getElementById('wizard').scrollIntoView({behavior:'smooth'});state.step=0;renderStep()">重新选择</button><button class="btn" onclick="window.print()">打印 / 保存 PDF</button></div>`;
+ res.innerHTML=html;res.classList.add("show");res.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function renderLibrary(kind){
+ const list=document.getElementById("librarylist");
+ let data=kind==="film"?films:kind==="leica"?leica:vsco;
+ list.innerHTML=data.map(x=>`<div class="libitem"><b>${x[0]}</b><small>${x[1]}${x[2]?" · "+x[2]:""}</small></div>`).join("");
+ document.querySelectorAll("[data-lib]").forEach(b=>b.classList.toggle("active",b.dataset.lib===kind));
+}
+document.querySelectorAll("[data-lib]").forEach(b=>b.addEventListener("click",()=>renderLibrary(b.dataset.lib)));
+renderStep();renderLibrary("film");
+</script>
+</body></html>
